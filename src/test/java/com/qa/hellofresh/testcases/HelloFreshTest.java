@@ -1,16 +1,18 @@
-package com.qa.hellofresh;
+package com.qa.hellofresh.testcases;
 
 
 import com.qa.hellofresh.base.BaseTest;
-import com.qa.hellofresh.page.SiteHomePage;
+import com.qa.hellofresh.exception.ApplicationException;
+import com.qa.hellofresh.exception.FrameworkException;
+import com.qa.hellofresh.exception.ScriptException;
+import com.qa.hellofresh.pageobjects.page.SiteHomePage;
 import org.testng.annotations.Test;
 
 public class HelloFreshTest extends BaseTest
 {
 
     @Test(groups = {"BAT"})
-    public void site_user_registration_functionality_test()
-    {
+    public void site_user_registration_functionality_test() throws FrameworkException  {
         new SiteHomePage(getDriver()).step_Perform_SingIn_Button().
                 step_Create_New_Account_Using_Email().
                 step_Enter_Personal_Information().
@@ -24,8 +26,7 @@ public class HelloFreshTest extends BaseTest
     }
 
     @Test(groups = {"BAT"})
-    public void site_basic_login_functionality_test()
-    {
+    public void site_basic_login_functionality_test() throws FrameworkException {
         new SiteHomePage(getDriver()).step_Perform_SingIn_Button().
                 step_Enter_Login_Credentials("hf_challenge_123456@hf12345.com", "12345678").
                 check_And_Validate_MyAccount_Title("MY ACCOUNT").
@@ -36,8 +37,7 @@ public class HelloFreshTest extends BaseTest
     }
 
     @Test(groups = {"BAT"})
-    public void site_item_checkout_functionality_test()
-    {
+    public void site_item_checkout_functionality_test() throws FrameworkException  {
         new SiteHomePage(getDriver()).step_Perform_SingIn_Button().
                 step_Enter_Login_Credentials("hf_challenge_123456@hf12345.com", "12345678").
                 step_Navigate_Woman_Collection_Using_MainMenu().
