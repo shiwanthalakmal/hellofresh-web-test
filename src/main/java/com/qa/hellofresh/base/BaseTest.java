@@ -15,7 +15,13 @@ public class BaseTest {
 
     @BeforeMethod
     public void testStart(){
-        driver = DriverConnection.getDriverInstance();
+        String exePath = "D:\\chromedriver.exe";
+        System.setProperty("webdriver.chrome.driver", exePath);
+        driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(30000, TimeUnit.MILLISECONDS);
+        driver.manage().window().maximize();
+        driver.manage().deleteAllCookies();
+        driver.get("http://automationpractice.com/index.php");
     }
 
     public RemoteWebDriver getDriver(){
@@ -25,6 +31,8 @@ public class BaseTest {
 
     @AfterMethod
     public void testFinished(){
-        DriverConnection.closeDriver();
+        driver.close();
+        driver.quit();
     }
+
 }

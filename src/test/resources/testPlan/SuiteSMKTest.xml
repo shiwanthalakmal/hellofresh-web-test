@@ -3,18 +3,8 @@
 <suite name="HelloFresh - WEB" verbose="1" configfailurepolicy="continue">
     <listeners>
         <listener class-name="com.qa.hellofresh.listener.TestNgListener"/>
-        <listener class-name="org.uncommons.reportng.HTMLReporter"/>
-        <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
     </listeners>
     <test name="Shopping Cart">
-        <groups>
-            <define name="smk">
-                <include name="BAT"/>
-            </define>
-            <run>
-                <include name="smk"/>
-            </run>
-        </groups>
         <classes>
             <class name="com.qa.hellofresh.testcases.HelloFreshTest"/>
         </classes>
