@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="HelloFresh - WEB" verbose="1" configfailurepolicy="continue">
+    <listeners>
+    </listeners>
+    <test name="Shopping Cart">
+        <groups>
+            <define name="smk">
+                <include name="BAT"/>
+            </define>
+            <run>
+                <include name="smk"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.qa.hellofresh.HelloFreshTest"/>
+        </classes>
+    </test>
+</suite>
