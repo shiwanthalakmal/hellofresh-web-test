@@ -48,5 +48,8 @@
 - [x] Introduce 'WorkingMemory' concept to track page-object input values while during the execution and verify that values under different page-object
 - [x] Fully keyboard utility support to perform execution smoothly
 - [x] Generate scree-shot for fail test case with testcase name
+- [x] Cross browser testing support
+- [x] WebDriver provide using factory design patten
+- [x] Introduce advance generic web-element smart wait concept and its managed framework level implicitly (test level no need to worry about explicit waits)
 - [x] Exception categorization minimize test maintenance effort and advance root cause analysis mechanism
-- [x] Using Decorator dsign pattern simlify web element action comlexity and reduce page-object complexity and enhance scripting speed and readability
+- [x] Using Decorator dsign pattern simplify web element action complexity and reduce page-object complexity and enhance scripting speed and readability
