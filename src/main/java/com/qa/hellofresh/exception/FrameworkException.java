@@ -1,5 +1,7 @@
 package com.qa.hellofresh.exception;
 
+import com.qa.hellofresh.support.ScreeCapture;
+
 /**
  * FrameworkException.java
  * Parent Framework com.cambio.qa.utils.exception class which is extended by com.cambio.qa.utils.exception class
@@ -17,11 +19,11 @@ public class FrameworkException extends Exception{
      */
     public FrameworkException(String message) {
         super(message);
-//        try {
-//            CoreUtil.logVerificationError(message, CoreUtil.getFileName());
-//        } catch (FrameworkException e) {
-//            e.printStackTrace();
-        //}
+        try {
+            ScreeCapture.captureDesktopScreenshot(ScreeCapture.getFileName());
+        } catch (FrameworkException e) {
+            e.printStackTrace();
+        }
 //        log.error(message);
     }
 

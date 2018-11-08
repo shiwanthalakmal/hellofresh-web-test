@@ -25,9 +25,8 @@ public class ScreeCapture {
      */
     public static void captureDesktopScreenshot(String fileName) throws FrameworkException {
         BufferedImage image = null;
-        String path = "D:\\HelloFresh\\hellofresh-web-test\\target\\screenshots\\";
-//    URL inputStream = CoreSupporter.class.getClassLoader().getResource("SuiteSMKTest.xml");
-//    String path = inputStream.getPath()+"../../../screenshots";
+        URL inputStream = ScreeCapture.class.getProtectionDomain().getCodeSource().getLocation();
+        String path = inputStream.getPath()+"../screenshots/browser/";
 
         try
         {

@@ -13,7 +13,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.*;
 
-import java.awt.*;
 import java.util.Collection;
 import java.util.Locale;
 
@@ -76,31 +75,64 @@ public class BasePage {
     }
 
     public void verifyEquals(String actual, String expected, String message) {
+        try {
             Assert.assertEquals(actual, expected);
+        } catch(AssertionError e){
+            handleAssertionFailure(e.getMessage());
+        }
     }
 
     public void verifyEquals(boolean actual, boolean expected, String message) {
+        try{
             Assert.assertEquals(actual, expected);
+        } catch(AssertionError e){
+            handleAssertionFailure(e.getMessage());
+        }
     }
 
     public void verifyEquals(Collection<?> actual, Collection<?> expected, String message) {
+        try{
             Assert.assertEquals(actual, expected);
+        } catch(AssertionError e){
+            handleAssertionFailure(e.getMessage());
+        }
     }
 
     public void verifyNotEquals(Object actual, Object expected, String message) {
+        try{
             Assert.assertNotEquals(actual, expected);
+        } catch(AssertionError e){
+            handleAssertionFailure(e.getMessage());
+        }
     }
 
     public void verifyNotEquals(String actual, String expected, String message) {
+        try{
             Assert.assertNotEquals(actual, expected, message);
+        } catch(AssertionError e){
+            handleAssertionFailure(e.getMessage());
+        }
     }
 
     public void verifyNotEquals(boolean actual, boolean expected, String message) {
+        try{
             Assert.assertNotEquals(actual, expected);
+        } catch(AssertionError e){
+            handleAssertionFailure(e.getMessage());
+        }
     }
 
     protected void test_step_initiation() {
         Reporter.log(Thread.currentThread().getStackTrace()[2].getMethodName());
         log.info("[Passed] :"+Thread.currentThread().getStackTrace()[2].getMethodName()+" ----");;
+    }
+
+    private void handleAssertionFailure(String message){
+        try {
+            ScreeCapture.captureDesktopScreenshot(ScreeCapture.getFileName());
+            Assert.fail(message);
+        } catch (FrameworkException e) {
+            e.printStackTrace();
+        }
     }
 }
