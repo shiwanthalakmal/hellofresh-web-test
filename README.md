@@ -54,3 +54,10 @@
 - [x] Introduce advance generic web-element smart wait concept and its managed framework level implicitly (test level no need to worry about explicit waits)
 - [x] Exception categorization minimize test maintenance effort and advance root cause analysis mechanism
 - [x] Using Decorator dsign pattern simplify web element action complexity and reduce page-object complexity and enhance scripting speed and readability
+
+### Third Party additional libraries usage
+
+- ```Unit test runner - org.testng 6.8```
+- ```Generate ramdom data set - com.github.javafaker 0.12```
+- ```Logging support - org.slf4j , log4j```
+- ```Reportng reporting support - reportng 1.1.4```
