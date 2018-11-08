@@ -9,6 +9,8 @@ import com.qa.hellofresh.exception.FrameworkException;
 import com.qa.hellofresh.support.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.*;
 
 import java.awt.*;
@@ -16,7 +18,7 @@ import java.util.Collection;
 import java.util.Locale;
 
 public class BasePage {
-
+    private static final Logger log = LoggerFactory.getLogger(BasePage.class);
     public RemoteWebDriver driver;
     public Faker faker;
 
@@ -95,5 +97,10 @@ public class BasePage {
 
     public void verifyNotEquals(boolean actual, boolean expected, String message) {
             Assert.assertNotEquals(actual, expected);
+    }
+
+    protected void test_step_initiation() {
+        Reporter.log(Thread.currentThread().getStackTrace()[2].getMethodName());
+        log.info("[Passed] :"+Thread.currentThread().getStackTrace()[2].getMethodName()+" ----");;
     }
 }

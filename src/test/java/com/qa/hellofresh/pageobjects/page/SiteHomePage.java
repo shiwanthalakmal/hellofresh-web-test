@@ -5,8 +5,11 @@ import com.qa.hellofresh.exception.ApplicationException;
 import com.qa.hellofresh.exception.ScriptException;
 import com.qa.hellofresh.pageobjects.panel.SiteHeaderPanel;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class SiteHomePage extends BasePage {
+    private static final Logger log = LoggerFactory.getLogger(SiteHomePage.class);
 
     SiteHeaderPanel siteHeaderPanel;
 
@@ -20,7 +23,9 @@ public class SiteHomePage extends BasePage {
      * @return SiteLoginPage
      */
     public SiteLoginPage step_Perform_SingIn_Button() throws ScriptException, ApplicationException {
+        test_step_initiation();
         siteHeaderPanel.action_Perform_SingIn_Button();
+        log.info("Perform sign-in button to access");
         return new SiteLoginPage(driver);
     }
 

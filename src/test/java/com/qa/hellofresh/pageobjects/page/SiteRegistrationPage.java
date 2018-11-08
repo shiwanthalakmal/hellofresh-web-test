@@ -8,10 +8,13 @@ import com.qa.hellofresh.pageobjects.panel.SiteHeaderPanel;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class SiteRegistrationPage extends BasePage {
+    private static final Logger log = LoggerFactory.getLogger(SiteRegistrationPage.class);
 
-    private By chkBx_Gender = By.id("id_gender2");
+    private By chkBx_Gender     = By.id("id_gender2");
     private By txtFld_Fname     = By.id("customer_firstname");
     private By txtFld_Lname     = By.id("customer_lastname");
     private By txtFld_Password  = By.id("passwd");
@@ -45,6 +48,7 @@ public class SiteRegistrationPage extends BasePage {
      * @return SiteRegistrationPage
      */
     public SiteRegistrationPage step_Enter_Personal_Information() throws FrameworkException {
+        test_step_initiation();
         checkBox(chkBx_Gender).check();
         textfield(txtFld_Fname).enterText(faker.name().firstName());
         textfield(txtFld_Lname).enterText(faker.name().lastName());
@@ -55,7 +59,7 @@ public class SiteRegistrationPage extends BasePage {
         select.selectByValue(String.valueOf(faker.number().numberBetween(1,12)));
         select = new Select(driver.findElement(ddl_Birth_Year));
         select.selectByValue(String.valueOf(faker.number().numberBetween(1980,2000)));
-
+        log.info("Provide personal information for registration");
         return this;
     }
 
@@ -64,6 +68,7 @@ public class SiteRegistrationPage extends BasePage {
      * @return SiteRegistrationPage
      */
     public SiteRegistrationPage step_Enter_Address_Information() throws FrameworkException {
+        test_step_initiation();
         textfield(txtFld_Company).enterText(faker.company().name());
         textfield(txtFld_Addre01).enterText(faker.company().name()+" "+faker.number().numberBetween(1,100));
         textfield(txtFld_Addre02).enterText(faker.address().buildingNumber());
@@ -75,6 +80,7 @@ public class SiteRegistrationPage extends BasePage {
         textfield(txtFld_landPhone).enterText(faker.phoneNumber().phoneNumber());
         textfield(txtFld_mobilePhon).enterText(faker.phoneNumber().cellPhone());
         textfield(txtFld_alias).enterText(faker.idNumber().ssnValid());
+        log.info("Provide address information for registration");
         return this;
     }
 
@@ -83,7 +89,9 @@ public class SiteRegistrationPage extends BasePage {
      * @return SiteProfilePage
      */
     public SiteProfilePage step_Submit_Account_Details() throws ScriptException, ApplicationException {
+        test_step_initiation();
         button(btn_SubmitAccount).click();
+        log.info("Make submit account with valid detail");
         return new SiteProfilePage(driver);
     }
 }
