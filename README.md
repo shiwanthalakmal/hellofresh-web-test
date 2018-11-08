@@ -27,9 +27,12 @@
 > - git clone [hellofresh-web-test](https://github.com/shiwanthalakmal/hellofresh-web-test.git)
 > - Run ```mvn clean install -Pdemo``` to execute configure demo test suite with maven profile
 > - Generate real time log under ```c:->log``` dir as well as ```console``` out put.
-> - End of the execution comprehensive report will generate under project target dir ```taeget```
+> - End of the execution comprehensive report will generate under project target dir ```taeget -> testng_reporter-reports -> index.html```
+> - End of the execution screen-short will generate for fail test cases under project target dir ```taeget -> screenshot```
 
 ```**Note: Possible to manage test suites using maven profile easily**```
+
+> "Execution Stability 100% and scripting velocity improved more than 10x times than previous"
 
 ### Feature of the framework (framework also comes with test project)
 
